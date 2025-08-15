@@ -1,0 +1,170 @@
+
+:root {
+            --primary-orange: #e88647;
+            --secondary-orange: #f7f3ec; /* Using a light color for the background */
+            --yellow: #f8db6e;
+            --background-color: #f7f3ec;
+            --text-color: #2c2c2c;
+        }
+
+        body {
+            background-color: var(--background-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-color);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0 120px 0; /* extra bottom padding for footer */
+        }
+
+        .card-container {
+            border-radius: 1.5rem;
+            overflow: hidden;
+            max-width: 900px;
+        }
+
+        .tab-bar {
+            display: flex;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .tab-bar .tab {
+            text-align: center;
+            padding: 1rem 0;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary-orange);
+            background-color: #fff;
+            position: relative;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
+        
+        .tab-bar .tab svg {
+            margin-right: 8px;
+            width: 24px;
+            height: 24px;
+        }
+        
+        .tab-bar .tab.active {
+            background-color: var(--primary-orange);
+            color: #fff;
+        }
+
+        .tab-bar .tab:first-child.active {
+            padding-left: 2rem;
+        }
+
+        .tab-bar .tab:last-child.active {
+            padding-right: 2rem;
+        }
+        
+        .tab-separator {
+            width: 30px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) skewX(-15deg);
+            background-color: var(--primary-orange);
+            z-index: -1;
+        }
+
+        .tab-content {
+            padding: 3rem;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            border: 1px solid #ddd;
+            background-color: #fcfcfc;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: var(--primary-orange);
+        }
+
+        .btn-primary {
+            background-color: var(--yellow);
+            border-color: var(--yellow);
+            color: var(--text-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 0.75rem 2rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #f7d24e;
+            border-color: #f7d24e;
+            box-shadow: 0 5px 20px rgba(248, 219, 110, 0.7);
+        }
+
+        .image-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+            
+        }
+
+        .image-container img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 1rem;
+            transform: rotate(-8deg);
+            border: 8px solid #fff;
+            background-color: orange;
+            position: relative;
+            bottom: 50px;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--primary-orange);
+            border-color: var(--primary-orange);
+        }
+        
+        .form-check-input:focus {
+            box-shadow: 0 0 0 0.25rem rgba(232, 134, 71, 0.25);
+        }
+
+        .link-text {
+            color: var(--primary-orange);
+            font-weight: 500;
+        }
+
+        .link-text:hover {
+            color: var(--primary-orange);
+            text-decoration: underline;
+        }
+
+        .no-account-text {
+            color: var(--text-color);
+            margin-top: 1rem;
+        }
+
+        /* Responsive layout for small screens */
+        @media (max-width: 768px) {
+            .image-container {
+                display: none; /* Hiding the image on smaller screens */
+            }
+        }

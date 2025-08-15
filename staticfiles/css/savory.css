@@ -1,0 +1,118 @@
+/* savory.css */
+
+/* General Section Styling */
+.savory-section {
+    padding: 50px 20px;
+    background-color: #fffdf9;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #6b4226; /* warm brown tone */
+}
+
+/* Grid Layout */
+.savory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Card Styling */
+.savory-card {
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.savory-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Image Styling */
+.savory-img {
+    position: relative;
+    overflow: hidden;
+}
+
+.savory-img img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Favorite Icon */
+.fav-icon {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 1.5rem;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    background-color: white;
+    border-radius: 50%;
+    padding: 4px 7px;
+}
+
+.fav-icon:hover {
+    color: #e63946; /* red on hover */
+}
+
+/* Info Styling */
+.savory-info {
+    padding: 15px;
+    flex-grow: 1; /* makes cards equal height */
+}
+
+.savory-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #4a2f19;
+    font-weight: bold;
+}
+
+.savory-info p {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 0;
+}
+
+/* Decoration Image at Bottom */
+.text-center img {
+    margin-top: 40px;
+    max-width: 100%;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.7rem;
+    }
+
+    .savory-img img {
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .savory-img img {
+        height: 150px;
+    }
+}

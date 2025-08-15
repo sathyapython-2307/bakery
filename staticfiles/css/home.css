@@ -1,0 +1,143 @@
+ /* Slideshow container */
+ body{
+    background-color: #fdf3ea;
+ } 
+ .slideshow-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+  }
+
+  /* Slide images */
+  .slide {
+    display: none;
+    width: 100%;
+  }
+
+  .slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  .why-choose-us {
+  background-color: #fdf3ea;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.section-title {
+  color: #d35400;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.choose-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.choose-card {
+  background: #fff7f0;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.choose-card:hover {
+  transform: translateY(-5px);
+}
+
+.choose-card img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 15px;
+}
+
+.choose-card h3 {
+  font-size: 1.1rem;
+  color: #d35400;
+  margin-bottom: 10px;
+}
+
+.choose-card p {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.faq-section {
+  background-color: #fdf3ea;
+  padding: 50px 20px;
+}
+
+.faq-container {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  max-width: 1100px;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.faq-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.faq-text h2 {
+  color: #e67e22;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.faq-item {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted #aaa;
+}
+
+.faq-item h3 {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.faq-item p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.faq-image {
+  flex: 0.8;
+  min-width: 250px;
+  display: flex;
+  justify-content: center;
+}
+
+.faq-image img {
+  max-width: 100%;
+  border-radius: 8px;
+  border: 3px solid #3498db;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .faq-container {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .faq-image {
+    margin-top: 20px;
+  }
+}
