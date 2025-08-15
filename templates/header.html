@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navigation Bar</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+</head>
+<body>
+    <nav class="navbar-custom">
+        <div class="container-fluid">
+            <!-- First Row -->
+            <div class="row navbar-row align-items-center w-100">
+                <!-- Logo Column (spans both rows) -->
+                <div class="col-lg-2 col-md-3 col-sm-3 d-flex justify-content-center">
+                    <div class="logo-container d-flex flex-column align-items-center">
+                           <img src="{% static 'images/logo.png' %}" alt="">
+                    </div>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div class="col-lg-8 col-md-6 col-sm-6 d-flex justify-content-center">
+                    <ul class="nav-links">
+                        <li><a href="{% url 'home' %}" class="active">HOME</a></li>
+                        <li><a href="{% url 'about' %}">ABOUT US</a></li>
+                        <li><a href="{% url 'product' %}">OUR PRODUCTS</a></li>
+                        <li><a href="{% url 'blog' %}">BLOG</a></li>
+                        <li><a href="{% url 'contact' %}">CONTACT US</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Navigation Icons -->
+                <div class="col-lg-2 col-md-3 col-sm-3 d-flex justify-content-center">
+                    <div class="nav-icons">
+                        <a href="{% url 'wishlist' %}" class="icon-link" style="position:relative;">
+                            <i class="fas fa-heart nav-icon"></i>
+                            {% with request.session.wishlist|length as wlcount %}
+                                {% if wlcount and wlcount > 0 %}
+                                    <span class="wishlist-badge">{{ wlcount }}</span>
+                                {% endif %}
+                            {% endwith %}
+                        </a>
+                        <i class="fas fa-bell nav-icon"></i>
+                        <a href="{% url 'cart' %}" class="cart-link" style="position:relative; margin-left:6px;">
+                            <i class="fas fa-shopping-bag nav-icon"></i>
+                            {% with request.session.cart|length as cartcount %}
+                                {% if cartcount and cartcount > 0 %}
+                                    <span class="cart-badge">{{ cartcount }}</span>
+                                {% endif %}
+                            {% endwith %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Second Row -->
+            <div class="row navbar-row align-items-center w-100">
+                <!-- Empty space for logo alignment -->
+                <div class="col-lg-2 col-md-3 col-sm-3"></div>
+                
+                <!-- Search Box -->
+                <div class="col-lg-8 col-md-6 col-sm-6 mb-3 d-flex justify-content-center">
+                    <form action="{% url 'search' %}" method="get" class="search-container d-flex" style="width:100%;max-width:420px;">
+                        <i class="fas fa-search search-icon"></i>
+                        <input name="q" type="text" class="search-input" placeholder="SEARCH HERE" value="{{ request.GET.q|default:'' }}">
+                    </form>
+                </div>
+                
+                <!-- Login/Logout Button -->
+                <div class="col-lg-2 col-md-3 col-sm-3 d-flex justify-content-center">
+                    {% if request.user.is_authenticated %}
+                        <div style="display:flex;align-items:center;gap:10px;">
+                            <span class="user-greet">Hi, {{ request.user.first_name|default:request.user.username }}</span>
+                            <a href="{% url 'logout' %}" class="login-btn">LOGOUT</a>
+                        </div>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="login-btn">LOGIN</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

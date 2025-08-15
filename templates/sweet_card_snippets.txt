@@ -1,0 +1,40 @@
+<div class="sweet-card">
+  <div class="sweet-img">
+    <img src="{% static 'images/sweet1.png' %}" alt="Milk Barfi">
+    <span class="fav-icon">♡</span>
+  </div>
+  <div class="sweet-info">
+    <h3>MILK BARFI</h3>
+    <p>FROM: ₹600 PER KG</p>
+  </div>
+</div>
+<div class="sweet-card">
+  <div class="sweet-img">
+    <img src="{% static 'images/sweet2.png' %}" alt="Kaju Katri">
+    <span class="fav-icon">♡</span>
+  </div>
+  <div class="sweet-info">
+    <h3>KAJU KATRI</h3>
+    <p>FROM: ₹700 PER KG</p>
+  </div>
+</div>
+<div class="sweet-card">
+  <div class="sweet-img">
+    <img src="{% static 'images/sweet3.png' %}" alt="Gulab Jamun">
+    <span class="fav-icon">♡</span>
+  </div>
+  <div class="sweet-info">
+    <h3>GULAB JAMUN</h3>
+    <p>FROM: ₹500 PER KG</p>
+  </div>
+</div>
+<div class="sweet-card">
+  <div class="sweet-img">
+    <img src="{% static 'images/sweet4.png' %}" alt="Badam Katli">
+    <span class="fav-icon">♡</span>
+  </div>
+  <div class="sweet-info">
+    <h3>BADAM KATLI</h3>
+    <p>FROM: ₹800 PER KG</p>
+  </div>
+</div>

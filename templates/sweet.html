@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Sweets{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/sweet.css' %}">
+{% endblock %}
+{% block content %}
+<div class="sweets-section">
+  <h2 class="section-title">OUR SWEETS</h2>
+  <div class="sweets-grid">
+      <div class="sweet-card" data-item-name="RASGULLA" data-item-img="{% static 'images/sweet1.png' %}" data-item-price="₹400 PER KG">
+        <div class="sweet-img">
+          <img src="{% static 'images/sweet1.png' %}" alt="Rasgulla">
+          <span class="fav-icon">♡</span>
+        </div>
+        <div class="sweet-info">
+          <h3>RASGULLA</h3>
+          <p>FROM: ₹400 PER KG</p>
+        </div>
+      </div>
+      <div class="sweet-card" data-item-name="GULAB JAMUN" data-item-img="{% static 'images/sweet2.png' %}" data-item-price="₹450 PER KG">
+        <div class="sweet-img">
+          <img src="{% static 'images/sweet2.png' %}" alt="Gulab Jamun">
+          <span class="fav-icon">♡</span>
+        </div>
+        <div class="sweet-info">
+          <h3>GULAB JAMUN</h3>
+          <p>FROM: ₹450 PER KG</p>
+        </div>
+      </div>
+    <div class="sweet-card">
+      <div class="sweet-img">
+        <img src="{% static 'images/sweet3.png' %}" alt="Gulab Jamun">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="sweet-info">
+        <h3>GULAB JAMUN</h3>
+        <p>FROM: ₹500 PER KG</p>
+      </div>
+    </div>
+    <div class="sweet-card">
+      <div class="sweet-img">
+        <img src="{% static 'images/sweet4.png' %}" alt="Badam Katli">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="sweet-info">
+        <h3>BADAM KATLI</h3>
+        <p>FROM: ₹800 PER KG</p>
+      </div>
+    </div>
+    <div class="sweet-card">
+      <div class="sweet-img">
+        <img src="{% static 'images/sweet5.png' %}" alt="Laddu">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="sweet-info">
+        <h3>LADDU</h3>
+        <p>FROM: ₹650 PER KG</p>
+      </div>
+    </div>
+    <div class="sweet-card">
+      <div class="sweet-img">
+        <img src="{% static 'images/sweet6.png' %}" alt="Rusaguly">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="sweet-info">
+        <h3>RUSAGULY</h3>
+        <p>FROM: ₹550 PER KG</p>
+      </div>
+    </div>
+    <div class="sweet-card">
+      <div class="sweet-img">
+        <img src="{% static 'images/sweet7.png' %}" alt="Jalebi">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="sweet-info">
+        <h3>JALEBI</h3>
+        <p>FROM: ₹1200 PER KG</p>
+      </div>
+    </div>
+    <div class="sweet-card">
+      <div class="sweet-img">
+        <img src="{% static 'images/sweet8.png' %}" alt="Mysore Pak">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="sweet-info">
+        <h3>MYSORE PAK</h3>
+        <p>FROM: ₹600 PER KG</p>
+      </div>
+    </div>
+    <div class="sweet-card">
+      <div class="sweet-img">
+        <img src="{% static 'images/sweet9.png' %}" alt="Kaja">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="sweet-info">
+        <h3>KAJA</h3>
+        <p>FROM: ₹1250 PER KG</p>
+      </div>
+    </div>
+    <div class="sweet-card">
+      <div class="sweet-img">
+        <img src="{% static 'images/sweet10.png' %}" alt="Tirunelveli Halwa">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="sweet-info">
+        <h3>TIRUNELVELI HALWA</h3>
+        <p>FROM: ₹900 PER KG</p>
+      </div>
+    </div>
+    <div class="sweet-card">
+      <div class="sweet-img">
+        <img src="{% static 'images/sweet11.png' %}" alt="Palkova">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="sweet-info">
+        <h3>PALKOVA</h3>
+        <p>FROM: ₹700 PER KG</p>
+      </div>
+    </div>
+    <div class="sweet-card">
+      <div class="sweet-img">
+        <img src="{% static 'images/sweet12.png' %}" alt="Bengali Malpua">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="sweet-info">
+        <h3>BENGALI MALPUA</h3>
+        <p>FROM: ₹850 PER KG</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-center">
+    <img src="{% static 'images/decoration_image.png' %}" class="img-fluid" alt="decor">
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.fav-icon').forEach(function(icon) {
+    icon.addEventListener('click', function () {
+      var card = this.closest('.sweet-card');
+      if (!card) return;
+      var payload = {
+        name: card.getAttribute('data-item-name') || card.querySelector('h3')?.textContent.trim(),
+        img: card.getAttribute('data-item-img') || card.querySelector('img')?.getAttribute('src'),
+        price: card.getAttribute('data-item-price') || card.querySelector('p')?.textContent.trim()
+      };
+      function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+      var csrftoken = getCookie('csrftoken');
+      fetch("{% url 'add_to_wishlist' %}", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
+          'X-CSRFToken': csrftoken
+        },
+        body: JSON.stringify(payload)
+      }).then(function(res){ return res.json(); }).then(function(data){
+        var prev = icon.textContent;
+        icon.textContent = '✓';
+          // update header badge (increment or create)
+          try {
+            var badge = document.querySelector('.wishlist-badge');
+            if (badge) {
+              badge.textContent = (parseInt(badge.textContent || '0') + 1).toString();
+            } else {
+              var heartLink = document.querySelector('.icon-link');
+              if (heartLink) {
+                var span = document.createElement('span');
+                span.className = 'wishlist-badge';
+                span.textContent = '1';
+                heartLink.appendChild(span);
+              }
+            }
+          } catch (e) { console.warn(e); }
+        setTimeout(function(){ icon.textContent = prev; }, 800);
+      }).catch(function(err){ console.error(err); });
+    });
+    var cardRoot = icon.closest('.sweet-card');
+    if (cardRoot) {
+      var imgEl = cardRoot.querySelector('.sweet-img img');
+      if (imgEl) imgEl.addEventListener('click', function(){
+        var name = cardRoot.getAttribute('data-item-name') || cardRoot.querySelector('h3')?.textContent.trim();
+        var img = cardRoot.getAttribute('data-item-img') || cardRoot.querySelector('img')?.getAttribute('src');
+        var price = cardRoot.getAttribute('data-item-price') || cardRoot.querySelector('p')?.textContent.trim();
+        var url = `{% url 'product_detail' 'sweet' 'dummy' %}`.replace('dummy', name.toLowerCase().replace(/\s+/g,'-')) + `?name=${encodeURIComponent(name)}&img=${encodeURIComponent(img)}&price=${encodeURIComponent(price)}`;
+        window.location.href = url;
+      });
+    }
+  });
+});
+</script>
+{% endblock %}

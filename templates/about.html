@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About Us - Cherii Bakery{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <!-- ABOUT US -->
+    <h2 class="section-title">ABOUT US</h2>
+    <div class="row align-items-center mb-5">
+        <div class="col-lg-8 about-text">
+            <p>Baking From the Heart Since 2012</p>
+            <p>At Cherii Bakery, every loaf, pastry, and cake tells a story. What started as a small kitchen passion has blossomed into a community favorite. We believe in using time-honored recipes, fresh local ingredients, and a generous sprinkle of love in every bite.</p>
+            <p>Our mission is to bring joy through handcrafted baked goods made daily with care and dedication. Whether it’s your morning bread or a special occasion cake, we treat each creation as if it’s for family.</p>
+            <p>We’re proud to serve our neighborhood, support local farmers, and bake a little happiness into every day.</p>
+        </div>
+        <div class="col-lg-4 text-center">
+            <img src="{% static 'images/a1.png' %}" alt="Bake it till you make it" class="img-fluid rounded">
+        </div>
+    </div>
+    <!-- OUR STORY -->
+    <h2 class="section-title">OUR STORY</h2>
+    <div class="row align-items-center mb-5">
+        <div class="col-lg-4 text-center">
+            <img src="{% static 'images/a2.png' %}" alt="The secret ingredient is always love" class="img-fluid rounded">
+        </div>
+        <div class="col-lg-8 about-text">
+            <p>Cherii Bakery began as a home kitchen dream and quickly became a beloved neighborhood treasure. Founded on the values of quality, community, and homemade charm, we bake everything fresh each day using family recipes and locally sourced ingredients.</p>
+        </div>
+    </div>
+    <!-- WHAT WE BELIEVE IN -->
+    <h2 class="section-title">WHAT WE BELIEVE IN</h2>
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-2">
+            <div class="icon-box">
+                <div class="icon-img">
+                    <img src="{% static 'images/a3.png' %}" alt="Fresh Daily">
+                </div>
+                <h5>Fresh, Handcrafted Daily</h5>
+                <p>Every morning, our bakers start early to bring you the freshest breads, pastries, and cakes—made from scratch using real, wholesome ingredients.</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-2">
+            <div class="icon-box">
+                <div class="icon-img">
+                    <img src="{% static 'images/a4.png' %}" alt="Locally Sourced">
+                </div>
+                <h5>Locally Sourced Ingredients</h5>
+                <p>We partner with local farms and suppliers to ensure the highest quality and support our community.</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-2">
+            <div class="icon-box">
+                <div class="icon-img">
+                    <img src="{% static 'images/a5.png' %}" alt="Custom Creations">
+                </div>
+                <h5>Unique & Custom Creations</h5>
+                <p>From classic croissants to custom birthday cakes, we bake with creativity and care—tailored to your tastes and special occasions.</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-2">
+            <div class="icon-box">
+                <div class="icon-img">
+                    <img src="{% static 'images/a6.png' %}" alt="Welcoming Atmosphere">
+                </div>
+                <h5>Warm, Welcoming Atmosphere</h5>
+                <p>We’re more than just a bakery—we’re your neighborhood spot for sweet treats, good coffee, and friendly smiles.</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-2">
+            <div class="icon-box">
+                <div class="icon-img">
+                    <img src="{% static 'images/a7.png' %}" alt="Excellence">
+                </div>
+                <h5>Passion for Excellence</h5>
+                <p>Baking is our passion, and it shows in every detail—from the golden crust to the crumb.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container py-4">
+    <!-- MEET THE BAKERY -->
+    <div class="text-center p-3 rounded" style="background-color: #fcecbf;">
+        <h5 class="fw-bold mb-1" style="color: #d87c27;">MEET THE BAKERY</h5>
+        <p class="mb-0" style="font-size: 0.9rem;">
+            Our team is made up of passionate bakers who bring skill, creativity, and care to every product.
+            From our Head Baker to our pastry chefs, everyone shares a commitment to quality and customer happiness.
+        </p>
+    </div>
+    <h5 class="fw-bold text-center" style="color: #d87c27;">COME VISIT US</h5>
+    <!-- COME VISIT US -->
+    <div class="row align-items-center mt-4">
+        <div class="col-md-7 text-center text-md-start">
+            <p>We’re severing smiles across Tamil Nadu with many <br> franchise locations!</p>
+            <p>Drop by your nearest branch and enjoy our fresh, <br> handcrafted treats.</p>
+            <h6 class="fw-bold" style="color: #d87c27;">Head office:</h6>
+            <p class="mb-0">
+                Cherii bakery,<br>
+                No.45, Anna Salai, T.Nager,<br>
+                chennai-600 017,<br>
+                Tamil Nadu, India
+            </p>
+        </div>
+        <!-- IMAGE -->
+        <div class="col-md-5 text-center mt-3 mt-md-0">
+            <img src="{% static 'images/a8.png' %}" alt="Bakery Ingredients"
+                 class="img-fluid rounded shadow-sm" style="max-width: 280px;">
+        </div>
+    </div>
+</div>
+{% endblock %}

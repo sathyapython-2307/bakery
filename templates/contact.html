@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Contact Us{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="container contact-container">
+    <!-- Main title and subtitle of the form -->
+    <div class="row">
+        <div class="col-12 text-center my-4">
+            <h1 class="form-heading">SEND US A MESSAGE</h1>
+            <p class="form-subtext">You can also use the form below to contact us directly. Our team will get back to you within 24 hours.</p>
+        </div>
+    </div>
+    <div class="row g-4 align-items-center">
+        <!-- Contact form section -->
+        <div class="col-lg-6 col-md-12">
+            <form>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name*</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">E Mail*</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number*</label>
+                    <input type="tel" class="form-control" id="phone" required>
+                </div>
+                <div class="mb-3">
+                    <label for="subject" class="form-label">Subject*</label>
+                    <input type="text" class="form-control" id="subject" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message*</label>
+                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                </div>
+                <div class="d-grid mt-4">
+                    <button id="contact-send-btn" type="submit" class="btn btn-custom" style="background-color:#e8a949;color:#fff;border-radius:12px;box-shadow:0 4px 8px rgba(0,0,0,0.08);padding:12px 24px;">SEND MESSAGES</button>
+                </div>
+            </form>
+        </div>
+        <!-- Image section -->
+        <div class="col-lg-6 col-md-12">
+            <div class="image-container h-100">
+                <img src="{% static 'images/c1.png' %}" class="img-fluid" alt="Count memories not calories">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="branches-container">
+    <h2 style="color:#f0bd39;text-align:center;text-transform:uppercase;letter-spacing:1px;">OUR BRANCHES ACROSS TAMIL NADU</h2>
+    <div class="content">
+        <!-- Left Collage Image -->
+        <div class="image-column">
+            <img src="{% static 'images/collage.png' %}" alt="Branches Collage">
+        </div>
+        <!-- Right Column Text -->
+        <div class="text-column">
+            <div class="branch"><h3>Chennai</h3>No. 45, Anna Salai, T. Nagar, Chennai – 600017</div>
+            <div class="branch"><h3>Coimbatore</h3>12, DB Road, RS Puram, Coimbatore – 641002</div>
+            <div class="branch"><h3>Madurai</h3>28, KK Nagar Main Road, Madurai – 625020</div>
+            <div class="branch"><h3>Tiruchirappalli (Trichy)</h3>7, Salai Road, Thillai Nagar, Trichy – 620018</div>
+            <div class="branch"><h3>Salem</h3>15, Five Roads, Fairlands, Salem – 636016</div>
+            <div class="branch"><h3>Tirunelveli</h3>11, South Bypass Road, Palayamkottai, Tirunelveli – 627002</div>
+            <div class="branch"><h3>Erode</h3>9, Brough Road, Erode – 638001</div>
+            <div class="branch"><h3>Vellore</h3>14, Katpadi Road, Gandhi Nagar, Vellore – 632006</div>
+            <div class="branch"><h3>Thoothukudi (Tuticorin)</h3>6, Beach Road, Tuticorin – 628001</div>
+            <div class="branch"><h3>Thanjavur</h3>10, Medical College Road, Thanjavur – 613004</div>
+            <div class="branch"><h3>Dindigul</h3>4, GTN Road, Dindigul – 624005</div>
+            <div class="branch"><h3>Kanchipuram</h3>3, Ekambaranathar Sannathi Street, Kanchipuram – 631502</div>
+            <div class="branch"><h3>Karur</h3>22, Kavai Road, Karur – 639002</div>
+            <div class="branch"><h3>Nagercoil</h3>16, Cape Road, Vadasery, Nagercoil – 629001</div>
+            <div class="branch"><h3>Cuddalore</h3>8, Beach Road, Cuddalore – 607001</div>
+            <div class="branch"><h3>Villupuram</h3>19, Tindivanam Road, Villupuram – 605602</div>
+            <div class="branch"><h3>Namakkal</h3>5, Salem Road, Namakkal – 637001</div>
+            <div class="branch"><h3>Tiruppur</h3>20, Avinashi Road, Tiruppur – 641603</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

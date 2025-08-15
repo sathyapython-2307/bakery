@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Product{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/product.css' %}">
+{% endblock %}
+{% block content %}
+<div class="products-section">
+  <h2 class="section-title">OUR PRODUCTS</h2>
+  <div class="products-grid">
+    <div class="product-card">
+      <a href="{% url 'cake' %}">
+        <img src="{% static 'images/p1.png' %}" alt="Cakes">
+      </a>
+      <div class="product-info">
+        <h3>CAKES</h3>
+        <p>20 TYPES</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="{% static 'images/p2.png' %}" alt="Pastries">
+      <div class="product-info">
+        <h3>PASTRIES</h3>
+        <p>12 TYPES</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <a href="{% url 'sweet' %}">
+        <img src="{% static 'images/p3.png' %}" alt="Sweets">
+      </a>
+      <div class="product-info">
+        <h3>SWEETS</h3>
+        <p>25 TYPES</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="{% static 'images/p5.png' %}" alt="Gift Box">
+      <div class="product-info">
+        <h3>GIFT BOX</h3>
+        <p>10 TYPES</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <a href="{% url 'savory' %}">
+        <img src="{% static 'images/p4.png' %}" alt="Sevories">
+      </a>
+      <div class="product-info">
+        <h3>SEVORIES</h3>
+        <p>34 TYPES</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="{% static 'images/p6.png' %}" alt="Breads">
+      <div class="product-info">
+        <h3>BREADS</h3>
+        <p>11 TYPES</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <a href="{% url 'cookie' %}">
+        <img src="{% static 'images/p7.png' %}" alt="Cookies & Biscuits">
+      </a>
+      <div class="product-info">
+        <h3>COOKIES & BISCUITS</h3>
+        <p>19 TYPES</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="{% static 'images/p8.png' %}" alt="Cream Roll">
+      <div class="product-info">
+        <h3>CREAM ROLL</h3>
+        <p>4 TYPES</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="{% static 'images/p9.png' %}" alt="Muffins & Fruit Cake">
+      <div class="product-info">
+        <h3>MUFFINS & FRUIT CAKE</h3>
+        <p>18 TYPES</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="{% static 'images/p10.png' %}" alt="Chips">
+      <div class="product-info">
+        <h3>CHIPS</h3>
+        <p>5 TYPES</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="{% static 'images/p11.png' %}" alt="Chocolates">
+      <div class="product-info">
+        <h3>CHOCOLATES</h3>
+        <p>10 TYPES</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="{% static 'images/p12.png' %}" alt="Rusk">
+      <div class="product-info">
+        <h3>RUSK</h3>
+        <p>7 TYPES</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-center">
+    <img src="{% static 'images/decoration_image.png' %}" class="img-fluid" alt="">
+</div>
+{% endblock %}

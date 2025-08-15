@@ -1,0 +1,80 @@
+<div class="cake-card" data-cake-name="COFFEE CAKE" data-cake-img="{% static 'images/cake4.png' %}" data-cake-price="₹700 PER KG">
+  <div class="cake-img">
+    <img src="{% static 'images/cake4.png' %}" alt="Coffee Cake">
+    <span class="fav-icon">♡</span>
+  </div>
+  <div class="cake-info">
+    <h3>COFFEE CAKE</h3>
+    <p>FROM: ₹700 PER KG</p>
+  </div>
+</div>
+<div class="cake-card" data-cake-name="VANILLA CAKE" data-cake-img="{% static 'images/cake5.png' %}" data-cake-price="₹600 PER KG">
+  <div class="cake-img">
+    <img src="{% static 'images/cake5.png' %}" alt="Vanilla Cake">
+    <span class="fav-icon">♡</span>
+  </div>
+  <div class="cake-info">
+    <h3>VANILLA CAKE</h3>
+    <p>FROM: ₹600 PER KG</p>
+  </div>
+</div>
+<div class="cake-card" data-cake-name="PINEAPPLE CAKE" data-cake-img="{% static 'images/cake6.png' %}" data-cake-price="₹650 PER KG">
+  <div class="cake-img">
+    <img src="{% static 'images/cake6.png' %}" alt="Pineapple Cake">
+    <span class="fav-icon">♡</span>
+  </div>
+  <div class="cake-info">
+    <h3>PINEAPPLE CAKE</h3>
+    <p>FROM: ₹650 PER KG</p>
+  </div>
+</div>
+<div class="cake-card" data-cake-name="BUTTERSCOTCH CAKE" data-cake-img="{% static 'images/cake7.png' %}" data-cake-price="₹700 PER KG">
+  <div class="cake-img">
+    <img src="{% static 'images/cake7.png' %}" alt="Butterscotch Cake">
+    <span class="fav-icon">♡</span>
+  </div>
+  <div class="cake-info">
+    <h3>BUTTERSCOTCH CAKE</h3>
+    <p>FROM: ₹700 PER KG</p>
+  </div>
+</div>
+<div class="cake-card" data-cake-name="FRUIT CAKE" data-cake-img="{% static 'images/cake8.png' %}" data-cake-price="₹900 PER KG">
+  <div class="cake-img">
+    <img src="{% static 'images/cake8.png' %}" alt="Fruit Cake">
+    <span class="fav-icon">♡</span>
+  </div>
+  <div class="cake-info">
+    <h3>FRUIT CAKE</h3>
+    <p>FROM: ₹900 PER KG</p>
+  </div>
+</div>
+<div class="cake-card" data-cake-name="PLUM CAKE" data-cake-img="{% static 'images/cake9.png' %}" data-cake-price="₹950 PER KG">
+  <div class="cake-img">
+    <img src="{% static 'images/cake9.png' %}" alt="Plum Cake">
+    <span class="fav-icon">♡</span>
+  </div>
+  <div class="cake-info">
+    <h3>PLUM CAKE</h3>
+    <p>FROM: ₹950 PER KG</p>
+  </div>
+</div>
+<div class="cake-card" data-cake-name="CARAMEL CAKE" data-cake-img="{% static 'images/cake10.png' %}" data-cake-price="₹800 PER KG">
+  <div class="cake-img">
+    <img src="{% static 'images/cake10.png' %}" alt="Caramel Cake">
+    <span class="fav-icon">♡</span>
+  </div>
+  <div class="cake-info">
+    <h3>CARAMEL CAKE</h3>
+    <p>FROM: ₹800 PER KG</p>
+  </div>
+</div>
+<div class="cake-card" data-cake-name="MANGO CAKE" data-cake-img="{% static 'images/cake11.png' %}" data-cake-price="₹850 PER KG">
+  <div class="cake-img">
+    <img src="{% static 'images/cake11.png' %}" alt="Mango Cake">
+    <span class="fav-icon">♡</span>
+  </div>
+  <div class="cake-info">
+    <h3>MANGO CAKE</h3>
+    <p>FROM: ₹850 PER KG</p>
+  </div>
+</div>

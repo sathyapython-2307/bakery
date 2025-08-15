@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Checkout{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/product.css' %}">
+{% endblock %}
+{% block content %}
+<div class="checkout container" style="max-width:900px;margin:20px auto;">
+  <h2 style="text-align:center;color:var(--accent);">CHECKOUT</h2>
+  <div style="display:flex;gap:18px;align-items:flex-start;">
+    <div style="flex:1;background:#fff;padding:18px;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.04);">
+      <h4 style="color:var(--accent);">ADD ADDRESS</h4>
+      <form method="post" action="{% url 'checkout' %}">
+        {% csrf_token %}
+        <input type="hidden" name="item_name" value="{{ item.name }}">
+        <input type="hidden" name="item_price" value="{{ item.price }}">
+        <input type="hidden" name="quantity" value="{{ item.quantity|default:'1' }}">
+        <input type="hidden" name="weight" value="{{ item.weight }}">
+        <div style="display:flex;gap:8px;flex-direction:column;">
+          <label>NAME*</label>
+          <input name="name" required class="form-control" />
+          <label>DELIVERY LOCATION*</label>
+          <input name="location" required class="form-control" />
+          <label>MOBILE NO*</label>
+          <input name="mobile" required class="form-control" />
+          <label>ADD NOTES</label>
+          <input name="notes" class="form-control" />
+          <label>ADDRESS*</label>
+          <textarea name="address" rows="4" class="form-control" required></textarea>
+        </div>
+        <h4 style="margin-top:12px;color:var(--accent);">PAYMENT OPTIONS</h4>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;">
+          <label><input type="radio" name="payment" value="upi" required> Pay UPI</label>
+          <label><input type="radio" name="payment" value="wallet"> Pay Wallet</label>
+          <label><input type="radio" name="payment" value="card"> Pay Credit Card</label>
+        </div>
+        <button type="submit" class="btn btn-warning" style="width:100%;">PAY & ORDER NOW</button>
+      </form>
+    </div>
+    <div style="width:340px;">
+      <div style="background:#fff;padding:12px;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.04);">
+        <h5>ORDER SUMMARY</h5>
+        <p>Quantity: {{ item.quantity|default:'1' }}</p>
+        <p>Product: {{ item.name }}</p>
+        <p>Weight: {{ item.weight|default:'1 KG' }}</p>
+        <p>Price: {{ item.price }}</p>
+        <hr>
+        <p><strong>TOTAL:</strong> {{ item.price }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

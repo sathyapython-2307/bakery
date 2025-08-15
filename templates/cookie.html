@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Cookies{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cookie.css' %}">
+{% endblock %}
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.fav-icon').forEach(function(icon) {
+    icon.addEventListener('click', function () {
+      var card = this.closest('.cookie-card');
+      if (!card) return;
+      var payload = {
+        name: card.getAttribute('data-item-name') || card.querySelector('h3')?.textContent.trim(),
+        img: card.getAttribute('data-item-img') || card.querySelector('img')?.getAttribute('src'),
+        price: card.getAttribute('data-item-price') || card.querySelector('p')?.textContent.trim()
+      };
+      function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+      var csrftoken = getCookie('csrftoken');
+      fetch("{% url 'add_to_wishlist' %}", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
+          'X-CSRFToken': csrftoken
+        },
+        body: JSON.stringify(payload)
+      }).then(function(res){ return res.json(); }).then(function(data){
+        var prev = icon.textContent;
+        icon.textContent = '✓';
+          setTimeout(function(){ icon.textContent = prev; }, 800);
+          // update header badge (increment or create)
+          try {
+            var badge = document.querySelector('.wishlist-badge');
+            if (badge) {
+              badge.textContent = (parseInt(badge.textContent || '0') + 1).toString();
+            } else {
+              var heartLink = document.querySelector('.icon-link');
+              if (heartLink) {
+                var span = document.createElement('span');
+                span.className = 'wishlist-badge';
+                span.textContent = '1';
+                heartLink.appendChild(span);
+              }
+            }
+          } catch (e) { console.warn(e); }
+      }).catch(function(err){ console.error(err); });
+    });
+    var cardRoot = icon.closest('.cookie-card');
+    if (cardRoot) {
+      var imgEl = cardRoot.querySelector('.cookie-img img');
+      if (imgEl) imgEl.addEventListener('click', function(){
+        var name = cardRoot.getAttribute('data-item-name') || cardRoot.querySelector('h3')?.textContent.trim();
+        var img = cardRoot.getAttribute('data-item-img') || cardRoot.querySelector('img')?.getAttribute('src');
+        var price = cardRoot.getAttribute('data-item-price') || cardRoot.querySelector('p')?.textContent.trim();
+        var url = `{% url 'product_detail' 'cookie' 'dummy' %}`.replace('dummy', name.toLowerCase().replace(/\s+/g,'-')) + `?name=${encodeURIComponent(name)}&img=${encodeURIComponent(img)}&price=${encodeURIComponent(price)}`;
+        window.location.href = url;
+      });
+    }
+  });
+});
+</script>
+{% endblock %}
+{% block content %}
+<div class="cookies-section">
+  <h2 class="section-title">OUR COOKIES</h2>
+  <div class="cookies-grid">
+    <div class="cookie-card">
+      <div class="cookie-img">
+        <img src="{% static 'images/cookies1.png' %}" alt="Chocolate Cookies">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cookie-info">
+        <h3>CHOCOLATE COOKIES</h3>
+        <p>FROM: ₹600 PER KG</p>
+
+      </div>
+    </div>
+    <div class="cookie-card">
+      <div class="cookie-img">
+        <img src="{% static 'images/cookies2.png' %}" alt="Sugar Cookies">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cookie-info">
+        <h3>SUGAR COOKIES</h3>
+        <p>FROM: ₹700 PER KG</p>
+      </div>
+    </div>
+    <div class="cookie-card">
+      <div class="cookie-img">
+        <img src="{% static 'images/cookies3.png' %}" alt="Oatmeal Cookies">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cookie-info">
+        <h3>OATMEAL COOKIES</h3>
+        <p>FROM: ₹850 PER KG</p>
+      </div>
+    </div>
+    <div class="cookie-card">
+      <div class="cookie-img">
+        <img src="{% static 'images/cookies4.png' %}" alt="Snickerdoodles">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cookie-info">
+        <h3>SNICKERDOODLES</h3>
+        <p>FROM: ₹500 PER KG</p>
+      </div>
+    </div>
+    <div class="cookie-card">
+      <div class="cookie-img">
+        <img src="{% static 'images/cookies5.png' %}" alt="Macarons">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cookie-info">
+        <h3>MACARONS</h3>
+        <p>FROM: ₹650 PER KG</p>
+      </div>
+    </div>
+    <div class="cookie-card">
+      <div class="cookie-img">
+        <img src="{% static 'images/cookies6.png' %}" alt="Coconut Cookies">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cookie-info">
+        <h3>COCONUT COOKIES</h3>
+        <p>FROM: ₹550 PER KG</p>
+      </div>
+    </div>
+    <div class="cookie-card">
+      <div class="cookie-img">
+        <img src="{% static 'images/cookies7.png' %}" alt="Butter Cookies">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cookie-info">
+        <h3>BUTTER COOKIES</h3>
+        <p>FROM: ₹1200 PER KG</p>
+      </div>
+    </div>
+    <div class="cookie-card">
+      <div class="cookie-img">
+        <img src="{% static 'images/cookies8.png' %}" alt="Alfajores">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cookie-info">
+        <h3>ALFAJORES</h3>
+        <p>FROM: ₹600 PER KG</p>
+      </div>
+    </div>
+    <div class="cookie-card">
+      <div class="cookie-img">
+        <img src="{% static 'images/cookies9.png' %}" alt="Biscotti">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cookie-info">
+        <h3>BISCOTTI</h3>
+        <p>FROM: ₹1250 PER KG</p>
+      </div>
+    </div>
+    <div class="cookie-card">
+      <div class="cookie-img">
+        <img src="{% static 'images/cookies10.png' %}" alt="Whoopie Pies">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cookie-info">
+        <h3>WHOOPIE PIES</h3>
+        <p>FROM: ₹900 PER KG</p>
+      </div>
+    </div>
+    <div class="cookie-card">
+      <div class="cookie-img">
+        <img src="{% static 'images/cookies11.png' %}" alt="Lemon Cookies">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cookie-info">
+        <h3>LEMON COOKIES</h3>
+        <p>FROM: ₹700 PER KG</p>
+      </div>
+    </div>
+    <div class="cookie-card">
+      <div class="cookie-img">
+        <img src="{% static 'images/cookies12.png' %}" alt="Amaretti Cookies">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cookie-info">
+        <h3>AMARETTI COOKIES</h3>
+        <p>FROM: ₹850 PER KG</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-center">
+    <img src="{% static 'images/decoration_image.png' %}" class="img-fluid" alt="decor">
+</div>
+{% endblock %}

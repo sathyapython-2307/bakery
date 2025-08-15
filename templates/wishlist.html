@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Wishlist{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cake.css' %}">
+{% endblock %}
+{% block content %}
+<div class="cakes-section">
+  <div style="display:flex; align-items:center; justify-content:space-between; max-width:1300px; margin:0 auto;">
+    <h2 class="section-title">MY WISHLIST</h2>
+    <form method="POST" action="{% url 'clear_wishlist' %}" onsubmit="return confirm('Remove all items from wishlist?');">
+      {% csrf_token %}
+      <button type="submit" class="btn" style="background:#f8e3c6; border:1px solid #e6bf8b; padding:6px 12px; border-radius:999px;">REMOVE ALL</button>
+    </form>
+  </div>
+  <div class="cakes-grid">
+    {% if wishlist %}
+      {% for item in wishlist %}
+        <div class="cake-card" style="position:relative;">
+          <div class="cake-img">
+            <img src="{{ item.img }}" alt="{{ item.name }}">
+          </div>
+          <div class="cake-info">
+            <h3>{{ item.name }}</h3>
+            <p>{{ item.price }}</p>
+          </div>
+          <div style="position:absolute;top:10px;right:10px;display:flex;gap:8px;">
+            <form method="POST" action="{% url 'remove_from_wishlist' %}">
+              {% csrf_token %}
+              <input type="hidden" name="img" value="{{ item.img }}">
+              <button class="btn btn-outline-danger btn-sm">Remove</button>
+            </form>
+            <a class="btn btn-warning btn-sm" href="{% url 'checkout' %}?name={{ item.name|urlencode }}&img={{ item.img|urlencode }}&price={{ item.price|urlencode }}">Buy Now</a>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>Your wishlist is empty.</p>
+    {% endif %}
+  </div>
+</div>
+<div class="text-center">
+    <img src="{% static 'images/decoration_image.png' %}" class="img-fluid" alt="decor">
+</div>
+{% endblock %}

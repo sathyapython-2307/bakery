@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Bakery Blog{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="container blog-container">
+        <!-- Main title of the blog -->
+        <div class="row">
+            <div class="col-12 text-center my-4">
+                <h1 class="main-heading">Welcome to Our Bakery Blog</h1>
+            </div>
+        </div>
+        <!-- First blog section: Image on the left, text on the right -->
+        <div class="row gy-4 align-items-center mb-5">
+            <div class="col-lg-6 col-md-12">
+                <div class="image-box">
+                    <img src="{% static 'images/b1.png' %}" class="img-fluid rounded-3" alt="Freshly baked loaf of bread">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="text-content">
+                    <h2 class="section-title">Fresh Bakes, Sweet Stories & Artisan Inspiration</h2>
+                    <p>At Cherish Bakery, our passion for baking goes beyond the oven; it's a story we love to share. This blog is your go-to destination for everything sweet, savory, and lovingly handmade. Whether you're a fellow baker, a food lover, or just someone who enjoys the warmth of freshly baked bread, our blog is filled with something just for you.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Second blog section: List of topics on the left, image on the right -->
+        <div class="row gy-4 align-items-center mb-5">
+            <div class="col-lg-6 col-md-12 order-lg-1 order-2">
+                <div class="text-content">
+                    <h3 class="section-title">What You'll Find Here:</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <h4 class="section-title">Behind-the-Scenes Stories</h4>
+                            <p>Get a peek inside our kitchen, meet our talented bakers, and learn what goes into creating your favorite pastries, cakes, and loaves.</p>
+                        </li>
+                        <li class="mb-3">
+                            <h4 class="section-title">Seasonal Specials & New Arrivals</h4>
+                            <p>Be the first to know about our latest menu additions, seasonal treats, and limited-edition goodies.</p>
+                        </li>
+                        <li class="mb-3">
+                            <h4 class="section-title">Recipes & Baking Tips</h4>
+                            <p>Try your hand at some of our favorite recipes and get expert tips to help you bake like a pro at home.</p>
+                        </li>
+                        <li class="mb-3">
+                            <h4 class="section-title">Customer Spotlights & Events</h4>
+                            <p>We love our community! Read about our amazing customers, featured events, and special moments shared in our bakery.</p>
+                        </li>
+                        <li class="mb-3">
+                            <h4 class="section-title">Sustainability & Ingredients</h4>
+                            <p>Learn more about the ingredients we use, our sourcing practices, and how we're working to bake better—for you and the planet.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 order-lg-2 order-1">
+                <div class="image-box">
+                    <img src="{% static 'images/b2.png' %}" class="img-fluid rounded-3" alt="Delicious berry and cream pastry">
+                </div>
+            </div>
+        </div>
+        <!-- Footer-like section with a concluding paragraph -->
+        <div class="row">
+            <div class="col-12">
+                <p class="footer-text">Whether you're here for mouthwatering ideas or curious about what's next in our oven, our blog is a delicious stop on your journey. Stay connected with us, leave a comment, and don't forget to subscribe so you never miss a crumb!</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

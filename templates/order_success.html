@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Order Success{% endblock %}
+{% block content %}
+<div class="container" style="max-width:700px;margin:40px auto;text-align:center;">
+  <h2 style="color:var(--accent);">THANK YOU! YOUR ORDER IS PLACED</h2>
+  {% if order %}
+    <p>Order for <strong>{{ order.item_name }}</strong> ({{ order.quantity }}) has been received.</p>
+    <p>Payment method: {{ order.payment }}</p>
+  {% else %}
+    <p>No recent order found.</p>
+  {% endif %}
+  <a href="{% url 'home' %}" class="btn btn-outline-primary">Back to Home</a>
+</div>
+{% endblock %}

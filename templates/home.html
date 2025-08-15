@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+{% block content %}
+<div class="slideshow-container">
+  <div class="slide"><img src="{% static 'images/home1.png' %}" alt="Slide 1"></div>
+  <div class="slide"><img src="{% static 'images/home2.png' %}" alt="Slide 2"></div>
+  <div class="slide"><img src="{% static 'images/home3.png' %}" alt="Slide 3"></div>
+  <div class="slide"><img src="{% static 'images/home4.png' %}" alt="Slide 4"></div>
+</div>
+<section class="why-choose-us">
+  <h2 class="section-title">Why Choose Us</h2>
+  <div class="choose-grid">
+
+    <div class="choose-card">
+      <img src="../static/images/a3.png" alt="Fresh Handcrafted Daily">
+      <h3>Fresh, Handcrafted Daily</h3>
+      <p>Every morning, our bakers start early to bring you the freshest breads, pastries, and cakes—made from scratch using real, wholesome ingredients.</p>
+    </div>
+
+    <div class="choose-card">
+      <img src="../static/images/a4.png" alt="Locally Sourced Ingredients">
+      <h3>Locally Sourced Ingredients</h3>
+      <p>We partner with local farms and suppliers to ensure the highest quality and support our community.</p>
+    </div>
+
+    <div class="choose-card">
+      <img src="../static/images/a5.png" alt="Unique & Custom Creations">
+      <h3>Unique & Custom Creations</h3>
+      <p>From classic croissants to custom birthday cakes, we bake with creativity and care—tailored to your tastes and special occasions.</p>
+    </div>
+
+    <div class="choose-card">
+      <img src="../static/images/a6.png" alt="Warm, Welcoming Atmosphere">
+      <h3>Warm, Welcoming Atmosphere</h3>
+      <p>We’re more than just a bakery—we’re your neighborhood spot for sweet treats, good coffee, and friendly smiles.</p>
+    </div>
+
+    <div class="choose-card">
+      <img src="../static/images/a7.png" alt="Passion for Excellence">
+      <h3>Passion for Excellence</h3>
+      <p>Baking is our passion, and it shows in every detail—from the golden crust to the last crumb.</p>
+    </div>
+
+  </div>
+</section>
+<div class="text-center">
+    <h1 style="color: orange;">OFFERS & DEALS</h1>
+    <img src="{% static 'images/home5.png' %}" class="img-fluid" alt="">
+</div>
+<section class="faq-section mt-4">
+  <div class="faq-container">
+    
+    <!-- Left: FAQ Text -->
+    <div class="faq-text">
+      <h2>COMMON QUESTION FOR CUSTOMERS</h2>
+
+      <div class="faq-item">
+        <h3>1. What kind of content do you post on your blog?</h3>
+        <p>We share a variety of content including baking tips, behind-the-scenes stories from our bakery, seasonal updates, recipes, product highlights, and community events.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>2. How often do you update the blog?</h3>
+        <p>We aim to post new content at least once or twice a month. Check back regularly or subscribe to our newsletter for updates!</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>3. Can I request a blog topic or recipe?</h3>
+        <p>Absolutely! We love hearing from our readers. If there's a recipe or topic you'd like us to cover, feel free to contact us or leave a comment on a blog post.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>4. Are the recipes you share easy to follow for beginners?</h3>
+        <p>Yes! We include clear instructions, tips, and sometimes even step-by-step photos to help bakers of all levels enjoy the process.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>5. Do you feature guest posts or collaborations?</h3>
+        <p>We’re open to collaborating with local chefs, food bloggers, and bakers to bring you more exciting content.</p>
+      </div>
+    </div>
+
+    <!-- Right: Image -->
+    <div class="faq-image">
+      <img src="../static/images/home6.png" alt="Macarons">
+    </div>
+
+  </div>
+</section>
+<div class="text-center">
+    <img src="{% static 'images/decoration_image.png' %}" class="img-fluid" alt="">
+</div>
+<div class="text-center">
+    <h1 style="color: orange;">OUR CUSTOMERS LOVE</h1>
+    <img src="{% static 'images/home7.png' %}" class="img-fluid" alt="">
+</div>
+<div class="text-center mt-2 mb-4">
+    <img src="{% static 'images/home8.png' %}" class="img-fluid" alt="">
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  let slideIndex = 0;
+  const slides = document.querySelectorAll(".slide");
+  function showSlides() {
+    if (!slides || slides.length === 0) return;
+    slides.forEach(slide => slide.style.display = "none");
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1 }
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 4000);
+  }
+  showSlides();
+});
+</script>
+{% endblock %}

@@ -1,0 +1,42 @@
+body {
+            font-family: Arial, sans-serif;
+            background-color: #fffaf6;
+        }
+        h2.section-title {
+            text-align: center;
+            color: #f58220;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        .about-text {
+            font-size: 25px;
+            line-height: 1.6;
+            text-align: center;
+
+            font-weight: bold;
+        }
+        .icon-box {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            height: 100%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .icon-img {
+            background-color: #D99A6C;
+            border-radius: 50%;
+            padding: 15px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .icon-img img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+        .icon-box h5 {
+            font-weight: bold;
+            color: #f58220;
+            margin-bottom: 10px;
+        }

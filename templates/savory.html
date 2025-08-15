@@ -1,0 +1,207 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Savory{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/savory.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.fav-icon').forEach(function(icon) {
+        icon.addEventListener('click', function () {
+            var card = this.closest('.savory-card');
+            if (!card) return;
+            var payload = {
+                name: card.getAttribute('data-item-name') || card.querySelector('h3')?.textContent.trim(),
+                img: card.getAttribute('data-item-img') || card.querySelector('img')?.getAttribute('src'),
+                price: card.getAttribute('data-item-price') || card.querySelector('p')?.textContent.trim()
+            };
+                    function getCookie(name) {
+                        var cookieValue = null;
+                        if (document.cookie && document.cookie !== '') {
+                            var cookies = document.cookie.split(';');
+                            for (var i = 0; i < cookies.length; i++) {
+                                var cookie = cookies[i].trim();
+                                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                    break;
+                                }
+                            }
+                        }
+                        return cookieValue;
+                    }
+                    var csrftoken = getCookie('csrftoken');
+                    fetch("{% url 'add_to_wishlist' %}", {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRFToken': csrftoken
+                        },
+                        body: JSON.stringify(payload)
+                    }).then(function(res){ return res.json(); }).then(function(data){
+                var prev = icon.textContent;
+                icon.textContent = '✓';
+                                    // update header badge (increment or create)
+                                    try {
+                                        var badge = document.querySelector('.wishlist-badge');
+                                        if (badge) {
+                                            badge.textContent = (parseInt(badge.textContent || '0') + 1).toString();
+                                        } else {
+                                            var heartLink = document.querySelector('.icon-link');
+                                            if (heartLink) {
+                                                var span = document.createElement('span');
+                                                span.className = 'wishlist-badge';
+                                                span.textContent = '1';
+                                                heartLink.appendChild(span);
+                                            }
+                                        }
+                                    } catch (e) { console.warn(e); }
+                setTimeout(function(){ icon.textContent = prev; }, 800);
+            }).catch(function(err){ console.error(err); });
+        });
+                        var cardRoot = icon.closest('.savory-card');
+                        if (cardRoot) {
+                            var imgEl = cardRoot.querySelector('.savory-img img');
+                            if (imgEl) imgEl.addEventListener('click', function(){
+                                var name = cardRoot.getAttribute('data-item-name');
+                                var img = cardRoot.getAttribute('data-item-img');
+                                var price = cardRoot.getAttribute('data-item-price');
+                                var url = `{% url 'product_detail' 'savory' 'dummy' %}`.replace('dummy', name.toLowerCase().replace(/\s+/g,'-')) + `?name=${encodeURIComponent(name)}&img=${encodeURIComponent(img)}&price=${encodeURIComponent(price)}`;
+                                window.location.href = url;
+                            });
+                        }
+    });
+});
+</script>
+{% endblock %}
+{% block content %}
+    <div class="savory-section">
+        <h2 class="section-title">OUR SAVORY SNACKS</h2>
+        <div class="savory-grid">
+            <div class="savory-card" data-item-name="MASALA MATHRI" data-item-img="{% static 'images/savory1.png' %}" data-item-price="₹600 PER KG">
+                <div class="savory-img">
+                    <img src="{% static 'images/savory1.png' %}" alt="Masala Mathri">
+                    <span class="fav-icon">♡</span>
+                </div>
+                    <h3>MASALA MATHRI</h3>
+                    <p>FROM: ₹600 PER KG</p>
+
+            </div>
+            <div class="savory-card" data-item-name="NAMAK PARA" data-item-img="{% static 'images/savory2.png' %}" data-item-price="₹700 PER KG">
+                <div class="savory-img">
+                    <img src="{% static 'images/savory2.png' %}" alt="Namak Para">
+                    <span class="fav-icon">♡</span>
+                </div>
+                <div class="savory-info">
+                    <h3>NAMAK PARA</h3>
+                    <p>FROM: ₹700 PER KG</p>
+                </div>
+            </div>
+            <div class="savory-card" data-item-name="MURUKKU/CHAKLI" data-item-img="{% static 'images/savory3.png' %}" data-item-price="₹850 PER KG">
+                <div class="savory-img">
+                    <img src="{% static 'images/savory3.png' %}" alt="Murukku/Chakli">
+                    <span class="fav-icon">♡</span>
+                </div>
+                <div class="savory-info">
+                    <h3>MURUKKU/CHAKLI</h3>
+                    <p>FROM: ₹850 PER KG</p>
+                </div>
+            </div>
+            <div class="savory-card" data-item-name="SAV (PLAIN/MASALA)" data-item-img="{% static 'images/savory4.png' %}" data-item-price="₹500 PER KG">
+                <div class="savory-img">
+                    <img src="{% static 'images/savory4.png' %}" alt="Sav (Plain/Masala)">
+                    <span class="fav-icon">♡</span>
+                </div>
+                <div class="savory-info">
+                    <h3>SAV (PLAIN/MASALA)</h3>
+                    <p>FROM: ₹500 PER KG</p>
+                </div>
+            </div>
+            <div class="savory-card">
+                <div class="savory-img">
+                    <img src="{% static 'images/savory5.png' %}" alt="Ribbon Pakoda">
+                    <span class="fav-icon">♡</span>
+                </div>
+                <div class="savory-info">
+                    <h3>RIBBON PAKODA</h3>
+                    <p>FROM: ₹650 PER KG</p>
+                </div>
+            </div>
+            <div class="savory-card">
+                <div class="savory-img">
+                    <img src="{% static 'images/savory6.png' %}" alt="Buffs">
+                    <span class="fav-icon">♡</span>
+                </div>
+                <div class="savory-info">
+                    <h3>BUFFS</h3>
+                    <p>FROM: ₹550 PER KG</p>
+                </div>
+            </div>
+            <div class="savory-card">
+                <div class="savory-img">
+                    <img src="{% static 'images/savory7.png' %}" alt="Khankar">
+                    <span class="fav-icon">♡</span>
+                </div>
+                <div class="savory-info">
+                    <h3>KHANKAR</h3>
+                    <p>FROM: ₹1200 PER KG</p>
+                </div>
+            </div>
+            <div class="savory-card">
+                <div class="savory-img">
+                    <img src="{% static 'images/savory8.png' %}" alt="Mixture">
+                    <span class="fav-icon">♡</span>
+                </div>
+                <div class="savory-info">
+                    <h3>MIXTURE</h3>
+                    <p>FROM: ₹600 PER KG</p>
+                </div>
+            </div>
+            <div class="savory-card">
+                <div class="savory-img">
+                    <img src="{% static 'images/savory9.png' %}" alt="Savory Muffins">
+                    <span class="fav-icon">♡</span>
+                </div>
+                <div class="savory-info">
+                    <h3>SAVORY MUFFINS</h3>
+                    <p>FROM: ₹1250 PER KG</p>
+                </div>
+            </div>
+            <div class="savory-card">
+                <div class="savory-img">
+                    <img src="{% static 'images/savory10.png' %}" alt="Whoopie Pies">
+                    <span class="fav-icon">♡</span>
+                </div>
+                <div class="savory-info">
+                    <h3>WHOOPIE PIES</h3>
+                    <p>FROM: ₹900 PER KG</p>
+                </div>
+            </div>
+            <div class="savory-card">
+                <div class="savory-img">
+                    <img src="{% static 'images/savory11.png' %}" alt="Mini Quiches">
+                    <span class="fav-icon">♡</span>
+                </div>
+                <div class="savory-info">
+                    <h3>MINI QUICHES</h3>
+                    <p>FROM: ₹700 PER KG</p>
+                </div>
+            </div>
+            <div class="savory-card">
+                <div class="savory-img">
+                    <img src="{% static 'images/savory12.png' %}" alt="Garlic Knots">
+                    <span class="fav-icon">♡</span>
+                </div>
+                <div class="savory-info">
+                    <h3>GARLIC KNOTS</h3>
+                    <p>FROM: ₹850 PER KG</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <img src="{% static 'images/decoration_image.png' %}" class="img-fluid" alt="decor">
+    </div>
+{% endblock %}

@@ -1,0 +1,239 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Product Details{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/product.css' %}">
+{% endblock %}
+{% block content %}
+<div class="product-page container" style="max-width:1200px; margin:24px auto;">
+  <div class="row gx-4">
+    <div class="col-md-6">
+      <div class="product-image-box">
+        <img src="{{ img }}" alt="{{ name }}" class="img-fluid rounded-3">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="product-details">
+        <small class="store-name">Cherii bakery</small>
+        <h2 class="product-title">{{ name }}</h2>
+        <p class="product-description">A delectable treat — description generated from the catalog. Customize this text as needed.</p>
+        <div class="price-row">
+          <div class="price">{{ price }}</div>
+          <div class="note">INCL. OF ALL TAXES</div>
+        </div>
+        <div class="weight-section">
+          <label>WEIGHT:</label>
+          <div class="weights">
+            {% for w in weights %}
+              <button class="weight-btn">{{ w }}</button>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="quantity-row">
+          <label>QUANTITY:</label>
+          <div class="qty-controls">
+            <button class="qty-decr">-</button>
+            <input type="text" value="01" class="qty-input">
+            <button class="qty-incr">+</button>
+          </div>
+        </div>
+        <div class="action-buttons">
+          <button class="btn btn-warning add-cart">ADD TO CART</button>
+          <button class="btn btn-outline-warning buy-now">BUY NOW</button>
+          <button id="add-wishlist-btn" class="btn btn-light" style="margin-left:12px;border:1px solid #ddd;">ADD TO WISHLIST</button>
+        </div>
+        <div class="meta-cards">
+          <div class="meta">
+            <strong>100% secure payment</strong>
+          </div>
+          <div class="meta">
+            <strong>24 hour preparation time</strong>
+          </div>
+          <div class="meta">
+            <strong>100% vegetarian</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row gx-4 mt-4">
+    <div class="col-md-6">
+      <div class="nutrition">
+        <h4>Nutrition:</h4>
+        <p>Serving Size (100g) (Amount per serving Calories 323 Kcal, Fat 11g, Saturated Fat 7g, Trans Fat 0g, Cholesterol 11mg, Sodium 278mg, Carbohydrate 51g, Sugar 26g, Protein 5g)</p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="ingredients">
+        <h4>Ingredients:</h4>
+        <p>Chocolate Sponge, Sugar Syrup, Chocolate Cream, Chocolate Truffle</p>
+        <h4>Allergies:</h4>
+        <p>Contains: Milk. May contain traces of nuts, sesame.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  // Quantity controls
+  function clampQuantity(n){
+    n = parseInt(n, 10);
+    if (isNaN(n) || n < 1) return 1;
+    return n;
+  }
+  function formatQty(n){
+    return (n < 10 ? '0' + n : String(n));
+  }
+
+  var qtyInput = document.querySelector('.qty-input');
+  var incr = document.querySelector('.qty-incr');
+  var decr = document.querySelector('.qty-decr');
+  if (qtyInput) {
+    // normalize initial value
+    qtyInput.value = formatQty(clampQuantity(qtyInput.value));
+  }
+  if (incr) incr.addEventListener('click', function(){
+    var v = clampQuantity(qtyInput.value || '0');
+    v = v + 1;
+    qtyInput.value = formatQty(v);
+  });
+  if (decr) decr.addEventListener('click', function(){
+    var v = clampQuantity(qtyInput.value || '0');
+    v = Math.max(1, v - 1);
+    qtyInput.value = formatQty(v);
+  });
+
+  // allow manual typing but enforce numeric on blur
+  if (qtyInput) {
+    qtyInput.addEventListener('input', function(){
+      // strip non-digits
+      this.value = this.value.replace(/[^0-9]/g, '');
+    });
+    qtyInput.addEventListener('blur', function(){
+      this.value = formatQty(clampQuantity(this.value || '0'));
+    });
+  }
+
+  // weight button selection
+  document.querySelectorAll('.weight-btn').forEach(function(w){
+    w.addEventListener('click', function(){
+      document.querySelectorAll('.weight-btn').forEach(function(x){ x.classList.remove('active'); });
+      w.classList.add('active');
+    });
+  });
+
+  var btn = document.getElementById('add-wishlist-btn');
+  if (!btn) return;
+  function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+  btn.addEventListener('click', function(){
+    var payload = {
+      name: '{{ name|escapejs }}',
+      img: '{{ img|escapejs }}',
+      price: '{{ price|escapejs }}'
+    };
+    var csrftoken = getCookie('csrftoken');
+    fetch("{% url 'add_to_wishlist' %}", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrftoken
+      },
+      body: JSON.stringify(payload)
+    }).then(function(r){ return r.json(); }).then(function(json){
+      if (json && json.status === 'success') {
+        btn.textContent = 'ADDED';
+        setTimeout(function(){ btn.textContent = 'ADD TO WISHLIST'; }, 1000);
+        // update header badge
+        try {
+          var badge = document.querySelector('.wishlist-badge');
+          if (badge) {
+            badge.textContent = (parseInt(badge.textContent || '0') + 1).toString();
+          } else {
+            var heartLink = document.querySelector('.icon-link');
+            if (heartLink) {
+              var span = document.createElement('span');
+              span.className = 'wishlist-badge';
+              span.textContent = '1';
+              heartLink.appendChild(span);
+            }
+          }
+        } catch (e) { console.warn(e); }
+      }
+    }).catch(console.error);
+  });
+  // Add to cart
+  var addCartBtn = document.querySelector('.add-cart');
+  if (addCartBtn) {
+    addCartBtn.addEventListener('click', function(){
+      var selectedWeight = document.querySelector('.weight-btn.active') ? document.querySelector('.weight-btn.active').textContent.trim() : (document.querySelector('.weight-btn') ? document.querySelector('.weight-btn').textContent.trim() : '1 KG');
+      var qty = clampQuantity((document.querySelector('.qty-input') || {value:'1'}).value || '1');
+      var payload = {
+        name: '{{ name|escapejs }}',
+        img: '{{ img|escapejs }}',
+        price: '{{ price|escapejs }}',
+        quantity: qty,
+        weight: selectedWeight
+      };
+      var csrftoken = getCookie('csrftoken');
+      fetch("{% url 'add_to_cart' %}", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrftoken
+        },
+        body: JSON.stringify(payload)
+      }).then(function(r){ return r.json(); }).then(function(json){
+        if (json && json.status === 'success') {
+          addCartBtn.textContent = 'ADDED';
+          setTimeout(function(){ addCartBtn.textContent = 'ADD TO CART'; }, 1000);
+          // update header cart badge
+          try {
+            var badge = document.querySelector('.cart-badge');
+            if (badge) {
+              badge.textContent = (parseInt(badge.textContent || '0') + 1).toString();
+              } else {
+              var cartLink = document.querySelector('.cart-link');
+              if (cartLink) {
+                var span = document.createElement('span');
+                span.className = 'cart-badge';
+                span.textContent = '1';
+                cartLink.appendChild(span);
+              }
+            }
+          } catch(e) { console.warn(e); }
+        }
+      }).catch(console.error);
+    });
+  }
+  // Buy now should go straight to checkout with current qty & weight
+  var buyNow = document.querySelector('.buy-now');
+  if (buyNow) {
+    buyNow.addEventListener('click', function(){
+  console.log('Buy Now clicked');
+      var selectedWeight = document.querySelector('.weight-btn.active') ? document.querySelector('.weight-btn.active').textContent.trim() : (document.querySelector('.weight-btn') ? document.querySelector('.weight-btn').textContent.trim() : '1 KG');
+      var qty = clampQuantity((document.querySelector('.qty-input') || {value:'1'}).value || '1');
+      var base = "{% url 'checkout' %}";
+      var params = '?name=' + encodeURIComponent('{{ name|escapejs }}') + '&img=' + encodeURIComponent('{{ img|escapejs }}') + '&price=' + encodeURIComponent('{{ price|escapejs }}') + '&quantity=' + qty + '&weight=' + encodeURIComponent(selectedWeight);
+      window.location.href = base + params;
+    });
+  }
+});
+</script>
+{% endblock %}

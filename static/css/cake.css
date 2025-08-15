@@ -1,0 +1,81 @@
+
+  .cakes-section {
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  .section-title {
+    color: #e57f35;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+  .cakes-grid {
+  display: grid;
+  /* use fixed tile width so single items keep tile size instead of stretching */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 260px));
+    gap: 1.5rem;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .cake-card {
+    background-color: #fff8f0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease;
+    position: relative;
+  }
+  .cake-card:hover {
+    transform: translateY(-5px);
+  }
+  .cake-img {
+    position: relative;
+    overflow: hidden;
+    /* enforce a consistent image box to match wishlist card */
+    height: 240px; /* increased slightly to match example */
+  }
+  .cake-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  }
+  .fav-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    padding: 4px 7px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .cake-info {
+    background: #f7eac4;
+    padding: 0.8rem;
+  }
+  .cake-info h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #000;
+  }
+  .cake-info p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #333;
+    font-weight: 500;
+  }
+  /* responsive tweaks for wishlist/grid on small screens */
+  @media (max-width: 576px) {
+    .cakes-grid {
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      justify-content: center;
+    }
+    .cake-img {
+      height: 180px;
+    }
+  }

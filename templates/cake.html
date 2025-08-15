@@ -1,0 +1,278 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Cakes{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cake.css' %}">
+{% endblock %}
+{% block content %}
+<div class="cakes-section">
+  <h2 class="section-title">OUR CAKES</h2>
+  <div class="cakes-grid">
+    <div class="cake-card" data-cake-name="BLACK FOREST CAKE" data-cake-img="{% static 'images/cake1.png' %}" data-cake-price="₹600 PER KG">
+      <div class="cake-img">
+        <img src="{% static 'images/cake1.png' %}" alt="Black Forest Cake">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cake-info">
+        <h3>BLACK FOREST CAKE</h3>
+        <p>FROM: ₹600 PER KG</p>
+      </div>
+    </div>
+    <div class="cake-card" data-cake-name="CHOCO DELIGHT CAKE" data-cake-img="{% static 'images/cake2.png' %}" data-cake-price="₹700 PER KG">
+      <div class="cake-img">
+        <img src="{% static 'images/cake2.png' %}" alt="Choco Delight Cake">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cake-info">
+        <h3>CHOCO DELIGHT CAKE</h3>
+        <p>FROM: ₹700 PER KG</p>
+      </div>
+    </div>
+    <div class="cake-card" data-cake-name="RED VELVET CAKE" data-cake-img="{% static 'images/cake3.png' %}" data-cake-price="₹800 PER KG">
+      <div class="cake-img">
+        <img src="{% static 'images/cake3.png' %}" alt="Red Velvet Cake">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cake-info">
+        <h3>RED VELVET CAKE</h3>
+        <p>FROM: ₹800 PER KG</p>
+      </div>
+    </div>
+    <div class="cake-card" data-cake-name="COFFEE CAKE" data-cake-img="{% static 'images/cake4.png' %}" data-cake-price="₹700 PER KG">
+      <div class="cake-img">
+        <img src="{% static 'images/cake4.png' %}" alt="Coffee Cake">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cake-info">
+        <h3>COFFEE CAKE</h3>
+        <p>FROM: ₹700 PER KG</p>
+      </div>
+    </div>
+    <div class="cake-card" data-cake-name="VANILLA CAKE" data-cake-img="{% static 'images/cake5.png' %}" data-cake-price="₹600 PER KG">
+      <div class="cake-img">
+        <img src="{% static 'images/cake5.png' %}" alt="Vanilla Cake">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cake-info">
+        <h3>VANILLA CAKE</h3>
+        <p>FROM: ₹600 PER KG</p>
+      </div>
+    </div>
+    <div class="cake-card" data-cake-name="PINEAPPLE CAKE" data-cake-img="{% static 'images/cake6.png' %}" data-cake-price="₹650 PER KG">
+      <div class="cake-img">
+        <img src="{% static 'images/cake6.png' %}" alt="Pineapple Cake">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cake-info">
+        <h3>PINEAPPLE CAKE</h3>
+        <p>FROM: ₹650 PER KG</p>
+      </div>
+    </div>
+    <div class="cake-card" data-cake-name="BUTTERSCOTCH CAKE" data-cake-img="{% static 'images/cake7.png' %}" data-cake-price="₹700 PER KG">
+      <div class="cake-img">
+        <img src="{% static 'images/cake7.png' %}" alt="Butterscotch Cake">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cake-info">
+        <h3>BUTTERSCOTCH CAKE</h3>
+        <p>FROM: ₹700 PER KG</p>
+      </div>
+    </div>
+    <div class="cake-card" data-cake-name="FRUIT CAKE" data-cake-img="{% static 'images/cake8.png' %}" data-cake-price="₹900 PER KG">
+      <div class="cake-img">
+        <img src="{% static 'images/cake8.png' %}" alt="Fruit Cake">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cake-info">
+        <h3>FRUIT CAKE</h3>
+        <p>FROM: ₹900 PER KG</p>
+      </div>
+    </div>
+    <div class="cake-card" data-cake-name="PLUM CAKE" data-cake-img="{% static 'images/cake9.png' %}" data-cake-price="₹950 PER KG">
+      <div class="cake-img">
+        <img src="{% static 'images/cake9.png' %}" alt="Plum Cake">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cake-info">
+        <h3>PLUM CAKE</h3>
+        <p>FROM: ₹950 PER KG</p>
+      </div>
+    </div>
+    <div class="cake-card" data-cake-name="CARAMEL CAKE" data-cake-img="{% static 'images/cake10.png' %}" data-cake-price="₹800 PER KG">
+      <div class="cake-img">
+        <img src="{% static 'images/cake10.png' %}" alt="Caramel Cake">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cake-info">
+        <h3>CARAMEL CAKE</h3>
+        <p>FROM: ₹800 PER KG</p>
+      </div>
+    </div>
+    <div class="cake-card" data-cake-name="MANGO CAKE" data-cake-img="{% static 'images/cake11.png' %}" data-cake-price="₹850 PER KG">
+      <div class="cake-img">
+        <img src="{% static 'images/cake11.png' %}" alt="Mango Cake">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cake-info">
+        <h3>MANGO CAKE</h3>
+        <p>FROM: ₹850 PER KG</p>
+      </div>
+    </div>
+    <div class="cake-card">
+      <div class="cake-img">
+        <img src="{% static 'images/cake12.png' %}" alt="Kit Kat Cake">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cake-info">
+        <h3>KIT KAT CAKE</h3>
+        <p>FROM: ₹850 PER KG</p>
+      </div>
+    </div>
+    <div class="cake-card">
+      <div class="cake-img">
+        <img src="{% static 'images/cake13.png' %}" alt="Rainbow Cake">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cake-info">
+        <h3>RAINBOW CAKE</h3>
+        <p>FROM: ₹1100 PER KG</p>
+      </div>
+    </div>
+    <div class="cake-card">
+      <div class="cake-img">
+        <img src="{% static 'images/cake14.png' %}" alt="Oreo Cake">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cake-info">
+        <h3>OREO CAKE</h3>
+        <p>FROM: ₹700 PER KG</p>
+      </div>
+    </div>
+    <div class="cake-card">
+      <div class="cake-img">
+        <img src="{% static 'images/cake15.png' %}" alt="Blueberry Cake">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cake-info">
+        <h3>BLUEBERRY CAKE</h3>
+        <p>FROM: ₹1050 PER KG</p>
+      </div>
+    </div>
+    <div class="cake-card">
+      <div class="cake-img">
+        <img src="{% static 'images/cake16.png' %}" alt="Rasmalai Cake">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cake-info">
+        <h3>RASMALAI CAKE</h3>
+        <p>FROM: ₹900 PER KG</p>
+      </div>
+    </div>
+    <div class="cake-card">
+      <div class="cake-img">
+        <img src="{% static 'images/cake17.png' %}" alt="Strawberry Cream Cake">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cake-info">
+        <h3>STRAWBERRY CREAM CAKE</h3>
+        <p>FROM: ₹700 PER KG</p>
+      </div>
+    </div>
+    <div class="cake-card">
+      <div class="cake-img">
+        <img src="{% static 'images/cake18.png' %}" alt="Customize Theme Cake">
+        <span class="fav-icon">♡</span>
+      </div>
+      <div class="cake-info">
+        <h3>CUSTOMIZE THEME CAKE</h3>
+        <p>FROM: ₹850 PER KG</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-center">
+    <img src="{% static 'images/decoration_image.png' %}" class="img-fluid" alt="decor">
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.cake-card .fav-icon').forEach(function(icon) {
+  icon.addEventListener('click', function(e) {
+      e.preventDefault();
+      var card = icon.closest('.cake-card');
+      var data = {
+        name: card.getAttribute('data-cake-name'),
+        img: card.getAttribute('data-cake-img'),
+        price: card.getAttribute('data-cake-price')
+      };
+      function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+      var csrftoken = getCookie('csrftoken');
+      fetch('{% url "add_to_wishlist" %}', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'X-CSRFToken': csrftoken
+        },
+        body: JSON.stringify(data)
+      }).then(function(response) {
+        console.log('fetch response status', response.status);
+        return response.json().catch(function() { return null; });
+      }).then(function(json) {
+        console.log('fetch json', json);
+        // if backend says success, give visual feedback
+        if (json && json.status === 'success') {
+          icon.textContent = '♥';
+          // update header badge (increment or create)
+          try {
+            var badge = document.querySelector('.wishlist-badge');
+            if (badge) {
+              badge.textContent = (parseInt(badge.textContent || '0') + 1).toString();
+            } else {
+              var heartLink = document.querySelector('.icon-link');
+              if (heartLink) {
+                var span = document.createElement('span');
+                span.className = 'wishlist-badge';
+                span.textContent = '1';
+                heartLink.appendChild(span);
+              }
+            }
+          } catch (e) { console.warn(e); }
+          setTimeout(function() { icon.textContent = '♡'; }, 900);
+        } else {
+          console.error('Add to wishlist failed', json);
+        }
+      }).catch(function(err) {
+        console.error('Network error adding to wishlist', err);
+      });
+    });
+    // also make clicking image or title open product detail
+    var cardRoot = icon.closest('.cake-card');
+    if (cardRoot) {
+      cardRoot.querySelector('.cake-img img').addEventListener('click', function(){
+        var name = cardRoot.getAttribute('data-cake-name');
+        var img = cardRoot.getAttribute('data-cake-img');
+        var price = cardRoot.getAttribute('data-cake-price');
+        var url = `{% url 'product_detail' 'cake' 'dummy' %}`.replace('dummy',''+name.toLowerCase().replace(/\s+/g,'-')) + `?name=${encodeURIComponent(name)}&img=${encodeURIComponent(img)}&price=${encodeURIComponent(price)}`;
+        window.location.href = url;
+      });
+    }
+  });
+});
+</script>
+{% endblock %}
